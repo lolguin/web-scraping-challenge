@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission To Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="jumbotron text-center">
+      <h1>Mission To Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+
+    <h2> <b>Latest Mars News</b></h2>
+    <h3><b>{{mars_data.news_title}}</b></h3>
+    <p>{{mars_data.news_body}}</p>
+
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-md-8">
+          <h2><b>Featured Mars Image</b></h2>
+          <img class = "img-fluid" src="{{mars_data.jpl_image}}" style="width:700px;height:500px;" alt="Featured Mars Image">  
+        </div>
+      
+        <div class="row">
+          <div class="col-md-4">
+            <h2><b>Current Weather On Mars</b></h2>
+            <p>{{mars_data.mars_weather}}</p>
+            <h2><b>Mars Facts</b></h2>
+            <p>{{mars_data.facts |safe}}</p>
+          </div>
+        </div> 
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+        <h1><b>Mars Hemispheres</b></h1>
+      </div>
+      </div>
+
+        <div class="row">
+          
+          {% for img in mars_data.hemi_img_url %} 
+          <div class="col-md-6">
+            <h3><b>{{img.title}}</b></h3>
+            <img class = "img-fluid" src="{{img.img_url}}" style="width:500px;height:500px;" alt="{{img.title}}">
+          </div>
+          {% endfor %}
+          
+        </div>
+    </div>
+
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+
+</html>
